@@ -24,7 +24,7 @@ class House:
     def __eq__(self, other):
         '''=='''
         if not isinstance(other, House):
-            raise TypeError('Количество этажей должно быть целым числом')
+            raise NameError(f'Обьект должен принадлежать к классу House')
         elif isinstance(other, House):
             return self.number_of_floors == other.number_of_floors
 
