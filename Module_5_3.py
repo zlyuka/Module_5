@@ -1,6 +1,8 @@
 class House:
-    def __init__(self, name, number_of_floors: int):
+    def __init__(self, name, number_of_floors):
         self.name = name
+        if not isinstance(number_of_floors, int):
+            raise TypeError('Количество этажей должно быть целым числом')
         self.number_of_floors = number_of_floors
 
     def go_to(self, new_floor):
@@ -21,34 +23,49 @@ class House:
 
     def __eq__(self, other):
         '''=='''
-        if isinstance(other, int) and isinstance(self.number_of_floors, int):
+        if not isinstance(other, House):
             raise TypeError('Количество этажей должно быть целым числом')
         elif isinstance(other, House):
             return self.number_of_floors == other.number_of_floors
 
     def __lt__(self, other):
         '''<'''
-        return self.number_of_floors < other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors < other.number_of_floors
+        else:
+            raise NameError(f'Обьект должен принадлежать к классу House')
 
     def __le__(self, other):
         '''<='''
-        return self.number_of_floors <= other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors <= other.number_of_floors
+        else:
+            raise NameError(f'Обьект должен принадлежать к классу House')
 
     def __gt__(self, other):
         '''>'''
-        return self.number_of_floors > other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors > other.number_of_floors
+        else:
+            raise NameError(f'Обьект должен принадлежать к классу House')
 
     def __ge__(self, other):
         '''>='''
-        return self.number_of_floors >= other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors >= other.number_of_floors
+        else:
+            raise NameError(f'Обьект должен принадлежать к классу House')
 
     def __ne__(self, other):
         '''!='''
-        return self.number_of_floors != other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors != other.number_of_floors
+        else:
+            raise NameError(f'Обьект должен принадлежать к классу House')
 
     def __add__(self, value : int):
         """ Увеличение этажей в здании"""
-        if not isinstance(value, int) and isinstance(self.number_of_floors, int):
+        if not isinstance(value, int) and isinstance(self.number_of_floors, House):
             raise TypeError('Количество этажей должно быть целым числом')
         elif isinstance(value, int):
             self.number_of_floors += value
