@@ -23,10 +23,10 @@ class House:
 
     def __eq__(self, other):
         '''=='''
-        if not isinstance(other, House):
-            raise NameError(f'Обьект должен принадлежать к классу House')
-        elif isinstance(other, House):
+        if isinstance(other, House):
             return self.number_of_floors == other.number_of_floors
+        else:
+            raise NameError(f'Обьект должен принадлежать к классу House')
 
     def __lt__(self, other):
         '''<'''
@@ -67,7 +67,7 @@ class House:
         """ Увеличение этажей в здании"""
         if not isinstance(value, int) and isinstance(self.number_of_floors, House):
             raise TypeError('Количество этажей должно быть целым числом')
-        elif isinstance(value, int):
+        else:
             self.number_of_floors += value
         return self
 
