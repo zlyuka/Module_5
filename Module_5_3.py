@@ -46,11 +46,13 @@ class House:
         '''!='''
         return self.number_of_floors != other.number_of_floors
 
-    def __add__(self, value):
+    def __add__(self, value : int):
         """ Увеличение этажей в здании"""
-        if isinstance(value, int):
+        if not isinstance(value, int) and isinstance(self.number_of_floors, int):
+            raise TypeError('Количество этажей должно быть целым числом')
+        elif isinstance(value, int):
             self.number_of_floors += value
-            return self
+        return self
 
     def __radd__(self, value):
         return self.__add__(value)
