@@ -25,43 +25,31 @@ class House:
         '''=='''
         if isinstance(other, House):
             return self.number_of_floors == other.number_of_floors
-        else:
-            raise NameError(f'Обьект должен принадлежать к классу House')
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     def __lt__(self, other):
         '''<'''
         if isinstance(other, House):
             return self.number_of_floors < other.number_of_floors
-        else:
-            raise NameError(f'Обьект должен принадлежать к классу House')
+        elif isinstance(other, int):
+            return self.number_of_floors < other
 
     def __le__(self, other):
         '''<='''
-        if isinstance(other, House):
-            return self.number_of_floors <= other.number_of_floors
-        else:
-            raise NameError(f'Обьект должен принадлежать к классу House')
+        return self.__eq__(other) or self.__lt__(other)
 
     def __gt__(self, other):
         '''>'''
-        if isinstance(other, House):
-            return self.number_of_floors > other.number_of_floors
-        else:
-            raise NameError(f'Обьект должен принадлежать к классу House')
+        return not self.__le__(other)
 
     def __ge__(self, other):
         '''>='''
-        if isinstance(other, House):
-            return self.number_of_floors >= other.number_of_floors
-        else:
-            raise NameError(f'Обьект должен принадлежать к классу House')
+        return not self.__lt__(other)
 
     def __ne__(self, other):
         '''!='''
-        if isinstance(other, House):
-            return self.number_of_floors != other.number_of_floors
-        else:
-            raise NameError(f'Обьект должен принадлежать к классу House')
+        return not self.__eq__(other)
 
     def __add__(self, value : int):
         """ Увеличение этажей в здании"""
