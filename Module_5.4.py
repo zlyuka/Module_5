@@ -11,7 +11,6 @@ class House:
             raise TypeError('Количество этажей должно быть целым числом')
         self.number_of_floors = number_of_floors
 
-
     def go_to(self, new_floor):
         '''Проверка этажа на соответствие зданию'''
         if 1 > new_floor or new_floor > self.number_of_floors:
@@ -58,7 +57,7 @@ class House:
         '''!='''
         return not self.__eq__(other)
 
-    def __add__(self, value : int):
+    def __add__(self, value: int):
         """ Увеличение этажей в здании"""
         if not isinstance(value, int) and isinstance(self.number_of_floors, House):
             raise TypeError('Количество этажей должно быть целым числом')
